@@ -1,0 +1,352 @@
+{
+  "langCode": "en-IN",
+  "name": "English (India)",
+  "brandSub": "Project Udyam Digital · Enterprise MSME Onboarding",
+  "navAdvisor": "1. AI Advisor",
+  "navQuote": "2. Quote & Plan",
+  "navKyc": "3. Smart KYC",
+  "navTracker": "4. Order Tracker",
+  "navBackOffice": "5. Back-Office & ML",
+  "advisorHeading": "Digital Business Advisor",
+  "advisorSub": "Sequential Discovery: 1. Type → 2. Size → 3. Locations → 4. Current Tools",
+  "stepProgress": "Discovery Step {step} of 4",
+  "restartBtn": "Restart Interview",
+  "inputPlaceholder": "Type your answer or click mic to speak...",
+  "sendBtn": "Send",
+  "whyTitle": "Why this bundle fits your business:",
+  "billLabel": "Single transparent monthly bill:",
+  "acceptBtn": "Accept Recommendation & View Quote",
+  "recsBadge": "Recommendation Ready",
+  "recsPending": "Discovery In Progress",
+  "awaitingTitle": "Awaiting Discovery Answers",
+  "awaitingDesc": "Answer the 4 questions on the left. The catalogue engine will assemble your bundle here.",
+  "demoTitle": "1-Click Judge Demo Scenarios:",
+  "step1": {
+    "title": "Step 1: Business Type",
+    "question": "Welcome to Airtel Business! <strong>Step 1 of 4: What type of business do you run?</strong> (e.g. Dental Clinic, Kirana Store, Restaurant, Factory, CA Office)",
+    "options": [
+      {
+        "label": "🩺 Clinic / Healthcare",
+        "val": "Dental Clinic"
+      },
+      {
+        "label": "🛒 Kirana / Retail Shop",
+        "val": "Kirana Grocery Store"
+      },
+      {
+        "label": "🍽️ Restaurant / Cafe",
+        "val": "Restaurant Chain"
+      },
+      {
+        "label": "🏭 Manufacturing Factory",
+        "val": "Auto Parts Manufacturing Factory"
+      },
+      {
+        "label": "💼 CA & Law Firm",
+        "val": "Chartered Accountant Firm"
+      }
+    ],
+    "placeholder": "Type business type or click mic..."
+  },
+  "step2": {
+    "title": "Step 2: Business Size",
+    "question": "Understood! <strong>Step 2 of 4: How many staff or employees work in your business?</strong>",
+    "options": [
+      {
+        "label": "1-3 staff (Micro)",
+        "val": "2 staff"
+      },
+      {
+        "label": "5-15 employees (Small)",
+        "val": "12 employees"
+      },
+      {
+        "label": "25-50 employees (Medium)",
+        "val": "45 employees"
+      },
+      {
+        "label": "80+ workforce (Enterprise)",
+        "val": "85 employees"
+      }
+    ],
+    "placeholder": "Enter employee count (e.g., 12)..."
+  },
+  "step3": {
+    "title": "Step 3: Locations",
+    "question": "Great! <strong>Step 3 of 4: How many branches or physical locations do you operate?</strong>",
+    "options": [
+      {
+        "label": "1 single location",
+        "val": "1 single location"
+      },
+      {
+        "label": "2-3 branches",
+        "val": "3 branches"
+      },
+      {
+        "label": "5 outlets",
+        "val": "5 outlets"
+      },
+      {
+        "label": "10+ multi-city sites",
+        "val": "10 locations"
+      }
+    ],
+    "placeholder": "Enter number of branches (e.g., 1 or 5)..."
+  },
+  "step4": {
+    "title": "Step 4: Current Tools & Needs",
+    "question": "Final question! <strong>Step 4 of 4: What do you currently use for connectivity and what tools do you need?</strong>",
+    "options": [
+      {
+        "label": "1. Shop Counter & POS (UPI Wi-Fi)",
+        "sub": "For UPI soundbox & card swipe machines on phone hotspot",
+        "val": "Mobile Hotspot, need billing POS and guest Wi-Fi"
+      },
+      {
+        "label": "2. Office & Clinic (Fiber, Email & IVR)",
+        "sub": "Commercial fiber, domain email & automated reception",
+        "val": "Home Broadband, need cloud telephony and office email"
+      },
+      {
+        "label": "3. Multi-Store Outlets (CCTV & Backup)",
+        "sub": "Live store sync, mobile CCTV & auto 4G/5G backup",
+        "val": "Mixed Local ISP, need SD-WAN, CCTV cameras and failover"
+      },
+      {
+        "label": "4. Factory Leased Line (1:1 Dedicated)",
+        "sub": "1:1 dedicated leased line, 99.5% SLA & IoT sensors",
+        "val": "Need 100 Mbps dedicated leased line and machine sensors"
+      }
+    ],
+    "placeholder": "Enter current tools & requirements...",
+    "guideTitle": "Easy Guide to Your 4 Choices:",
+    "guideSubtitle": "Pick the option that best matches your daily business setup and tools:",
+    "guideItems": [
+      {
+        "badge": "Choice 1 · Kirana & Retail Counter",
+        "title": "Shop Counter & UPI Billing POS",
+        "easyDesc": "For single shops, grocery stores, or cafes on mobile hotspots. Gives dedicated counter Wi-Fi so your UPI QR, soundbox, and card swipe machines never freeze or fail during billing."
+      },
+      {
+        "badge": "Choice 2 · Clinics & Professional Offices",
+        "title": "Office Suite, Domain Email & Phone IVR",
+        "easyDesc": "For clinics, CA firms, and consultancy offices on home internet. Gives commercial fiber broadband, professional domain emails (you@firm.com), and an automated IVR reception greeting so patient or client calls are never missed."
+      },
+      {
+        "badge": "Choice 3 · Retail Chains & Restaurants",
+        "title": "Multi-Store Outlets, CCTV & Backup",
+        "easyDesc": "For multi-outlet businesses. Syncs live billing across stores (SD-WAN), provides 24/7 mobile-view CCTV cameras, and automatic 4G/5G backup router that kicks in instantly if fiber wire gets cut outside."
+      },
+      {
+        "badge": "Choice 4 · Factories & High-Speed Industry",
+        "title": "1:1 Dedicated Leased Line & Machine IoT",
+        "easyDesc": "For factories, manufacturing plants, and tech centers. Provides an unshared 1:1 dedicated leased line with 99.5% uptime SLA guarantee, static IP for servers, and real-time connectivity for factory machinery and IoT sensors."
+      }
+    ]
+  },
+  "step5": {
+    "header": "Discovery complete! Tailored digital bundle assembled from Airtel Product Catalogue:",
+    "whyTitle": "Why this bundle fits:",
+    "billLabel": "Single Monthly Bill:",
+    "startOver": "Start Over"
+  },
+  "rationales": {
+    "clinic": "Replaces unreliable home broadband with high-speed commercial fiber. Smart Cloud Telephony with automated greeting ensures patient appointment calls are never missed, while Endpoint Security protects confidential patient medical records.",
+    "restaurant": "Multi-site branches are linked with Managed SD-WAN for seamless POS and kitchen order sync. Dual 4G/5G failover guarantees zero payment disruptions when primary fiber trips. Cloud CCTV enables 24/7 centralized camera surveillance across all dining locations.",
+    "kirana": "Cost-effective 100 Mbps commercial fiber combined with a fixed Static IP guarantees uninterrupted UPI QR code payments and POS billing with 99.5% commercial uptime.",
+    "manufacturing": "A private 1:1 fiber line reserved purely for your facility ensures your ERP, inventory systems, and automated machinery run with guaranteed 99.9% uptime. Smart IoT sensors track machine running time and power usage, while enterprise firewall security blocks cyber attacks 24/7.",
+    "office": "High-speed 300 Mbps commercial fiber bundled with professional company email and antivirus security to protect confidential client files, tax filings, and audit records with 99.5% uptime."
+  },
+  "recSolutionTag": "Airtel Business Solution",
+  "recInclusionsTitle": "Catalogue Inclusions:",
+  "recProductPlaceholder": "Complete the 4 steps to view product breakdown",
+  "recAllInOneLabel": "All-in-One Monthly Cost",
+  "recSetupWaived": "Setup fee waived",
+  "demoSub": "Instantly evaluates 25 products in product_catalogue.csv",
+  "demoScenarios": {
+    "clinic": "🩺 Dental Clinic (12 staff · 1 site · Home Broadband)",
+    "restaurant": "🍽️ Restaurant Chain (45 staff · 5 sites · SD-WAN & CCTV)",
+    "kirana": "🛒 Kirana Store (2 staff · 1 site · Hotspot to POS)",
+    "manufacturing": "🏭 Factory (85 staff · 1 site · 100M Leased Line + IoT)",
+    "ca_firm": "💼 CA & Law Firm (12 staff · Cloud Email + Antivirus)"
+  },
+  "tabQuote": {
+    "stepTag": "Step 2 of 4 · Instant Quote",
+    "heading": "Customized Digital Bundle & Transparent Pricing",
+    "sub": "Single consolidated invoice. Server-side price lock. Toggle optional add-ons in real-time.",
+    "estLabel": "Estimated Monthly Recurring",
+    "baseInclusionsTitle": "Base Package Inclusions",
+    "addonsTitle": "Optional Recommended Add-ons (Server-Side Validated)",
+    "addonFailoverTitle": "Automatic 4G/5G Wireless Backup Router",
+    "addonFailoverDesc": "If the main internet wire ever cuts, it instantly switches to mobile SIM data so your UPI payments and card machines never stop working.",
+    "addonCctvTitle": "Cloud CCTV Surveillance (2 HD Cameras)",
+    "addonCctvDesc": "Watch live shop video and past 30 days of recordings directly on your smartphone anytime, anywhere—no expensive recording machine needed.",
+    "addonStaticIpTitle": "Public Static IP Address",
+    "addonStaticIpDesc": "A fixed, permanent internet address for your business—required for staff biometric attendance machines, local servers, and direct bank billing.",
+    "billTitle": "Single Unified Monthly Bill",
+    "baseLabel": "Base Package",
+    "addonLabel": "Selected Add-ons",
+    "setupLabel": "Installation & Setup",
+    "setupVal": "Waived (₹0)",
+    "subtotalLabel": "Subtotal",
+    "gstLabel": "GST (18%)",
+    "totalLabel": "Total Due Monthly",
+    "priceLockText": "Price lock guarantee for 12 months",
+    "gstInvoiceText": "Single consolidated GST tax invoice",
+    "proceedText": "Proceed to Smart KYC Verification",
+    "perMonth": "/ mo",
+    "plusGst": "+ GST"
+  },
+  "tabKyc": {
+    "stepTag": "Step 3 of 4 · Automated Digital KYC",
+    "heading": "Smart KYC & Data Privacy Engine",
+    "sub": "Instant verification against national registries with DPDP Act 2023 consent and DoT 90-day currency rules.",
+    "applicantSelectLabel": "Specimen Test Applicant:",
+    "dpdpTitle": "DPDP Act 2023 Statutory Consent & Privacy Notice",
+    "dpdpPurposeBadge": "Purpose-Limited",
+    "dpdpNoticeText": "In compliance with the Digital Personal Data Protection Act, 2023 and Department of Telecommunications (DoT) regulations, Airtel Business collects business registration and signatory proof strictly for service provisioning, billing, and statutory telecom verification. PII is tokenized and masked in all systems.",
+    "dpdpConsentCheckLabel": "I grant explicit digital consent to verify registration data against GSTN and Udyam national registries.",
+    "doc1Title": "Doc 1: Business Registration (GST)",
+    "doc1GstinLabel": "Extracted GSTIN (Masked):",
+    "doc1LegalLabel": "Entity Legal Name:",
+    "doc1RegCheckLabel": "Registry Cross-Check:",
+    "doc2Title": "Doc 2: MSME Registration (Udyam)",
+    "doc2UdyamNoLabel": "Udyam MSME Number:",
+    "doc2TypeLabel": "Classification:",
+    "doc2PriorityLabel": "MSME Priority:",
+    "doc2PriorityVal": "Priority Business Broadband",
+    "doc3Title": "Doc 3: Authorized Signatory ID",
+    "doc3TokenBadge": "DPDP Tokenized",
+    "doc3SignatoryLabel": "Authorized Signatory:",
+    "doc3IdLabel": "Redacted Identifier:",
+    "doc3PrivacyLabel": "Privacy Safeguard:",
+    "doc4Title": "Doc 4: Address Proof (Premises)",
+    "doc4DocTypeLabel": "Document Type:",
+    "doc4IssueDateLabel": "Validity & Issue Date:",
+    "doc4PremisesLabel": "Premises Address:",
+    "uploadTitle": "Upload Additional Business Document (PDF / PNG / JPG)",
+    "uploadSub": "Upload GST, Udyam, Signatory ID & Address Proof files for automated verification",
+    "runKycBtnText": "Run Automated Compliance & Registry Check",
+    "runKycSubtext": "Autonomous evaluation & DoT rules",
+    "kycDecisionHeaderLabel": "Automated Verification Decision",
+    "kycAuditFindingLabel": "Compliance Summary:",
+    "kycProceedBtnText": "KYC Approved · Proceed to Order Tracker",
+    "replaceBtn": "Replace File",
+    "removeBtn": "Remove",
+    "clickUpload": "Click to Upload",
+    "mandatoryDoc": "Mandatory Document",
+    "awaitingDoc": "Awaiting Document Upload",
+    "notVerified": "Not Verified (Document Missing)",
+    "docsActiveBadge": "4 / 4 Documents Active",
+    "docsMissingBadge": "{count} / 4 Uploaded ({missing} Missing)",
+    "activeDocsNotice": "All 4 documents are securely encrypted.",
+    "missingDocsNotice": "Please upload all 4 documents to verify.",
+    "actionNeededPrefix": "Action Needed:",
+    "decisionApprovedTitle": "Verification Approved · Ready for Provisioning",
+    "decisionHaltedTitle": "Verification Halted · Compliance Issue Detected",
+    "decisionApprovedSummary": "Entity is verified Active (<strong>{legalName}</strong>). MSME Udyam classification verified, premises address proof is within statutory DoT 90-day currency limits ({days}d old), and DPDP Act 2023 digital consent is recorded.",
+    "auditDoc1": "Doc 1: GSTIN Registry Check ({gstin}): ACTIVE ({legalName})",
+    "auditDoc2": "Doc 2: MSME Udyam Registry Check: {udyam} ({type})",
+    "auditDoc3": "Doc 3: Authorized Signatory Verification ({name} ({role})): DPDP Act Tokenized",
+    "auditDoc4": "Doc 4: Premises Address Proof Currency: {days} days old (Statutory DoT Rule: ≤ 90 days)",
+    "passBadge": "PASS",
+    "failBadge": "FAIL"
+  },
+  "tabTracker": {
+    "stepTag": "Step 4 of 4 · Order & Installation",
+    "heading": "Order Status & Installation Tracker",
+    "sub": "",
+    "milestoneTitle": "Installation Progress",
+    "slaBadge": "Guaranteed Installation: Under 48 Hours",
+    "m1Title": "1. Plan & Quote Confirmed",
+    "m1Desc": "Your business plan is confirmed with 12-month price protection.",
+    "m2Title": "2. Business KYC Verified",
+    "m2Desc": "Business registration and documents successfully verified.",
+    "m3Title": "3. Installation Engineer Assigned",
+    "m3Desc": "Airtel technician is on the way to install your fiber connection.",
+    "m3Status": "IN PROGRESS",
+    "m4Title": "4. Speed Test & Service Activation",
+    "m4Desc": "On-site speed test at your business and welcome confirmation SMS.",
+    "m4Status": "Estimated Tomorrow",
+    "assignedExecTitle": "Assigned Installation Engineer",
+    "assignedExecRole": "Senior Fiber Installation Engineer",
+    "assignedExecRating": "★ 4.9 Rating (420 installs)",
+    "slaLabel": "Guaranteed Time:",
+    "slaVal": "Under 48 Hours",
+    "installWindowLabel": "Installation Slot:",
+    "installWindowVal": "Tomorrow, 2:00 PM - 4:00 PM",
+    "equipmentLabel": "Equipment Provided:",
+    "equipmentVal": "Wi-Fi 6 High-Speed Router",
+    "supportLabel": "Need Help? Call:",
+    "revAdvTitle": "1. AI Advisor Discovery",
+    "revAdvSub": "Needs Assessed · Plan Recommended",
+    "revQuoteTitle": "2. Quote & Plan",
+    "revQuoteSub": "Transparent Monthly Bill Locked",
+    "revKycTitle": "3. Smart KYC & Privacy",
+    "revKycSub": "4 Documents & GSTN Verified",
+    "doneBadge": "Done",
+    "orderBadgeText": "Order"
+  },
+  "footerText": "Airtel Business Enterprise Track A · Project Udyam Digital · Fully DPDP Act 2023 & DoT Compliant",
+  "bundles": {
+    "starter": {
+      "name": "Airtel Starter Digital Pack",
+      "segment": "Shops & retail outlets",
+      "sla": "99.5% Reliable Business Fiber",
+      "desc": "Fast 100 Mbps business fiber + permanent Static IP + GST billing & stock app."
+    },
+    "mfg_pro": {
+      "name": "Airtel Smart Manufacturing Suite",
+      "segment": "Small & medium factories",
+      "sla": "Guaranteed 99.9% private internet uptime",
+      "desc": "Dedicated 1:1 private fiber line (100 Mbps) + smart machine IoT sensors + managed cyber firewall."
+    },
+    "multi_chain": {
+      "name": "Airtel Connected Enterprise (Multi-Site)",
+      "segment": "Multi-branch businesses",
+      "sla": "99.5% Fiber + Auto 4G/5G Backup Router",
+      "desc": "300 Mbps commercial fiber + automatic 4G/5G backup router + branch SD-WAN network + Cloud CCTV."
+    },
+    "pro_office": {
+      "name": "Airtel Professional Office Suite",
+      "segment": "Clinics, CA firms & offices",
+      "sla": "99.5% Fast Business Fiber",
+      "desc": "300 Mbps commercial fiber + smart business phone IVR + professional company email + antivirus security."
+    }
+  },
+  "kycBadges": {
+    "activeTaxpayer": "Active Taxpayer",
+    "suspended": "Suspended",
+    "cancelled": "Cancelled",
+    "verifiedMsme": "Verified MSME",
+    "exemptNone": "Exempt / None",
+    "dotValid": "Valid (≤90 Days)",
+    "dotExpired": "Expired (>90 Days)",
+    "approvedDecision": "APPROVED",
+    "rejectedDecision": "ACTION REQUIRED / REJECTED",
+    "verifiedRegDate": "Verified in National GSTN",
+    "dpdpConsentStatus": "DPDP Digital Consent Recorded",
+    "notUploaded": "Not Uploaded · Required",
+    "dpdpTokenized": "DPDP Tokenized"
+  },
+  "advisorLockedText": "Discovery Completed · Answers & Recommendation Saved (Non-Editable)",
+  "advisorEditText": "Edit Answers",
+  "advisorNextText": "Next: Quote",
+  "backToAdvisorBtn": "Back to AI Advisor",
+  "quoteLockedText": "Quote Accepted · 12-Month Price Lock Active (Non-Editable)",
+  "quoteEditText": "Modify Add-ons",
+  "quoteNextText": "Next: Smart KYC",
+  "backToQuoteBtn": "Back to Quote & Plan",
+  "kycLockedText": "Smart KYC Verified & DPDP Consent Recorded (Non-Editable)",
+  "kycReturnTrackerText": "Return to Order Tracker",
+  "reviewJourneyTitle": "Order Active & Tracked:",
+  "reviewJourneySub": "Review your saved inputs from previous pages (view-only):",
+  "revBtnAdv": "1. View Advisor",
+  "revBtnQuote": "2. View Quote",
+  "revBtnKyc": "3. View KYC",
+  "inputPlaceholderLocked": "Discovery interview completed · Details saved (Read-Only)",
+  "kycVerifiedBadge": "KYC Verified & Audit Passed",
+  "continueToKyc": "Continue to Smart KYC",
+  "awaitingRationale": "The recommendation engine matches business type, staff headcount, multi-site presence, and network gaps against Airtel Business catalogue rules."
+}

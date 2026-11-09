@@ -1,0 +1,23 @@
+{
+  "name": "airtel-udyam-digital",
+  "version": "1.0.0",
+  "description": "Project Udyam Digital - Airtel Business GenAI Multi-Lingual MSME Onboarding Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node scripts/verify_i18n.js && node scripts/test_stage_progression_gate.js && node scripts/test_clean_empty_kyc.js"
+  },
+  "keywords": [
+    "airtel",
+    "business",
+    "udyam",
+    "genai",
+    "msme",
+    "kyc",
+    "i18n"
+  ],
+  "author": "Airtel SYNC Enterprise Track A",
+  "license": "ISC"
+}
+

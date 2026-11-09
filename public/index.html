@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtel: Wi-Fi, Postpaid, Prepaid, DTH, Bank & Business | Project Udyam Digital</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --airtel-red: #E40000;
+      --airtel-dark: #181818;
+      --airtel-gray: #717171;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #F8F9FA;
+      color: #181818;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.01em;
+    }
+    .focus-airtel:focus {
+      outline: none;
+      border-color: #E40000;
+      box-shadow: 0 0 0 3px rgba(228, 0, 0, 0.18);
+    }
+    .brand-accent {
+      color: #E40000;
+    }
+    .brand-bg {
+      background-color: #E40000;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+  <!-- 2. Header: Minimalist, Clean White with Official Airtel Branding -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+      
+      <!-- Official Airtel Logo & Wordmark -->
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('advisor')">
+        <img src="logo.jpeg" alt="Airtel Logo" class="h-9 w-auto max-w-[120px] object-contain rounded">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-lg font-black tracking-tighter text-gray-900 lowercase leading-none">airtel</span>
+            <span class="text-[9px] font-black uppercase tracking-wider bg-[#E40000] text-white px-2 py-0.5 rounded-full">Business</span>
+          </div>
+          <p class="text-[10px] text-gray-500 font-medium mt-0.5" id="brandSubTitle">Project Udyam Digital · MSME Onboarding in One Sitting</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Pills) -->
+      <nav class="hidden md:flex items-center space-x-1 bg-gray-100 p-1 rounded-full border border-gray-200/80">
+        <button onclick="switchTab('advisor')" id="navBtnAdvisor" class="px-4 py-1.5 text-xs font-bold rounded-full bg-white text-[#E40000] shadow-xs transition cursor-pointer flex items-center">
+          <i class="fa-solid fa-robot mr-1.5 text-xs"></i> 1. AI Advisor
+        </button>
+        <button onclick="switchTab('quote')" id="navBtnQuote" title="Locked: Complete Step 1 (AI Advisor) first" class="px-3.5 py-1.5 text-xs font-semibold rounded-full text-gray-400 bg-gray-50 border border-gray-200/40 cursor-not-allowed opacity-60 transition flex items-center">
+          <i class="fa-solid fa-lock text-[10px] mr-1.5 text-gray-400"></i> 2. Quote & Plan
+        </button>
+        <button onclick="switchTab('kyc')" id="navBtnKyc" title="Locked: Complete Step 2 (Quote & Plan) first" class="px-3.5 py-1.5 text-xs font-semibold rounded-full text-gray-400 bg-gray-50 border border-gray-200/40 cursor-not-allowed opacity-60 transition flex items-center">
+          <i class="fa-solid fa-lock text-[10px] mr-1.5 text-gray-400"></i> 3. Smart KYC & Privacy
+        </button>
+        <button onclick="switchTab('tracker')" id="navBtnTracker" title="Locked: Complete Step 3 (Smart KYC) first" class="px-3.5 py-1.5 text-xs font-semibold rounded-full text-gray-400 bg-gray-50 border border-gray-200/40 cursor-not-allowed opacity-60 transition flex items-center">
+          <i class="fa-solid fa-lock text-[10px] mr-1.5 text-gray-400"></i> 4. Order Tracker
+        </button>
+      </nav>
+
+      <!-- Right Controls: Categories, Session Badge & Language Selector -->
+      <div class="flex items-center space-x-2.5">
+        <div class="flex items-center space-x-1.5">
+          <i class="fa-solid fa-globe text-gray-400 text-sm"></i>
+          <select id="langSelect" onchange="onLanguageChange()" class="text-xs font-semibold border border-gray-300 rounded-lg px-2.5 py-1.5 bg-white text-gray-800 shadow-2xs focus-airtel cursor-pointer">
+            <option value="en">English (India)</option>
+            <option value="hi">हिंदी (Hindi)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="gu">ગુજરાતી (Gujarati)</option>
+            <option value="bn">বাংলা (Bengali)</option>
+            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stage Progression Lock Floating Notification Toast -->
+  <div id="stageLockToast" class="fixed top-16 left-1/2 transform -translate-x-1/2 z-50 hidden bg-gray-900/95 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl items-center gap-2.5 border border-red-500/50 backdrop-blur-sm transition-all duration-300">
+    <i class="fa-solid fa-lock text-red-500 text-sm"></i>
+    <span id="stageLockToastText" class="font-medium"></span>
+  </div>
+
+
+  <!-- Mobile Tab Nav -->
+  <div class="md:hidden flex overflow-x-auto bg-white border-b border-gray-200 px-3 py-2 space-x-2 text-xs">
+    <button onclick="switchTab('advisor')" id="mobNavAdvisor" class="px-3.5 py-1.5 rounded-full bg-[#E40000] font-bold text-white shrink-0 cursor-default">1. Advisor (Active)</button>
+    <button onclick="switchTab('quote')" id="mobNavQuote" class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-400 font-medium shrink-0 cursor-not-allowed opacity-60 border border-gray-200/50">🔒 2. Quote</button>
+    <button onclick="switchTab('kyc')" id="mobNavKyc" class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-400 font-medium shrink-0 cursor-not-allowed opacity-60 border border-gray-200/50">🔒 3. Smart KYC</button>
+    <button onclick="switchTab('tracker')" id="mobNavTracker" class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-400 font-medium shrink-0 cursor-not-allowed opacity-60 border border-gray-200/50">🔒 4. Tracker</button>
+  </div>
+
+  <!-- Main Content Body -->
+  <main class="max-w-7xl mx-auto px-4 py-5 flex-1 w-full">
+
+    <!-- ======================================================== -->
+    <!-- TAB 1: GENAI ADVISOR (ORDERED 4-STEP DISCOVERY) -->
+    <!-- ======================================================== -->
+    <section id="tab-advisor" class="space-y-4">
+
+      <!-- Locked / Saved State Banner for Tab 1 -->
+      <div id="advisorLockedBanner" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between shadow-sm">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-lock text-emerald-600"></i> <span id="advisorLockedText">Discovery Completed · Answers & Recommendation Saved (Non-Editable)</span></span>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="unlockPage('advisor')" class="text-[11px] text-[#E40000] hover:underline font-bold flex items-center gap-1 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i> <span id="advisorEditText">Edit Answers</span></button>
+          <button type="button" onclick="switchTab('quote')" class="text-[11px] bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1"><span id="advisorNextText">Next: Quote</span> <i class="fa-solid fa-arrow-right text-[9px]"></i></button>
+        </div>
+      </div>
+
+      <!-- Minimalist Top Context Card -->
+      <div class="bg-white border border-gray-200 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-sm">
+        <div>
+          
+          <h2 class="text-lg font-bold text-gray-900" id="advisorHeading">Digital Business Advisor</h2>
+          <p class="text-xs text-gray-500" id="advisorSub">Sequential Discovery: 1. Type → 2. Size → 3. Locations → 4. Current Tools</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="resetInterview()" class="text-xs font-medium text-gray-600 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 cursor-pointer">
+            <i class="fa-solid fa-rotate-left text-[11px]"></i> <span id="restartBtnText">Restart Interview</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Minimalist Progress Bar -->
+      <div class="bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm">
+        <div class="flex items-center justify-between text-xs font-semibold text-gray-600 mb-1.5">
+          <span id="stepProgressLabel">Discovery Step 1 of 4</span>
+          <span id="stepPercentLabel" class="text-[#E40000] font-bold">25%</span>
+        </div>
+        <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+          <div id="stepProgressBar" class="bg-[#E40000] h-full rounded-full transition-all duration-300" style="width: 25%"></div>
+        </div>
+      </div>
+
+      <!-- Main Advisor Layout: Chat on Left, Recommendation on Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        
+        <!-- Left: Interactive Sequential Chat -->
+        <div class="lg:col-span-2 bg-white border border-gray-200 rounded-xl flex flex-col h-[540px] shadow-sm">
+          
+          <!-- Chat Header -->
+          <div class="px-4 py-3 border-b border-gray-200 flex items-center justify-between bg-gray-50/50">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span class="text-xs font-bold text-gray-800" id="assistantTitle">Udyam Digital Assistant</span>
+              <span class="text-[10px] text-gray-400" id="assistantPowered">· Powered by Airtel Catalogue</span>
+            </div>
+            <div class="flex items-center gap-1 text-[11px] font-mono" id="assistantLangTag">
+              <button type="button" onclick="setLanguage('en')" data-chat-lang="en" class="px-1.5 py-0.5 rounded font-bold transition">EN</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('hi')" data-chat-lang="hi" class="px-1.5 py-0.5 rounded font-bold transition">HI</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('te')" data-chat-lang="te" class="px-1.5 py-0.5 rounded font-bold transition">TE</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('ta')" data-chat-lang="ta" class="px-1.5 py-0.5 rounded font-bold transition">TA</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('mr')" data-chat-lang="mr" class="px-1.5 py-0.5 rounded font-bold transition">MR</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('gu')" data-chat-lang="gu" class="px-1.5 py-0.5 rounded font-bold transition">GU</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('bn')" data-chat-lang="bn" class="px-1.5 py-0.5 rounded font-bold transition">BN</button>
+              <span class="text-gray-300">·</span>
+              <button type="button" onclick="setLanguage('pa')" data-chat-lang="pa" class="px-1.5 py-0.5 rounded font-bold transition">PA</button>
+            </div>
+          </div>
+
+          <!-- Chat Conversation Scroll Area -->
+          <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs">
+            <!-- Dynamically populated and re-rendered in target language on switch -->
+          </div>
+
+          <!-- Quick Option Buttons for Active Step -->
+          <div id="quickOptionsContainer" class="px-4 py-2.5 bg-gray-50/80 border-t border-gray-200 flex flex-wrap gap-2 text-xs min-h-[46px] items-center">
+            <!-- Dynamic quick reply buttons -->
+          </div>
+
+          <!-- Input Bar with Voice Input (STT) -->
+          <div class="p-3 border-t border-gray-200 bg-white">
+            <form onsubmit="handleFormSubmit(event)" class="flex items-center gap-2">
+              <button type="button" id="micBtn" onclick="toggleVoiceRecognition()" title="Voice Microphone Input" class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center shrink-0 transition cursor-pointer">
+                <i class="fa-solid fa-microphone text-sm" id="micIcon"></i>
+              </button>
+              <input type="text" id="userInput" placeholder="Type your answer or click mic to speak..." class="flex-1 text-xs border border-gray-300 rounded-xl px-3.5 py-2.5 focus-airtel bg-white transition">
+              <button type="submit" class="bg-[#E40000] hover:bg-red-700 text-white px-4 py-2.5 rounded-xl font-bold text-xs transition flex items-center gap-1.5 shrink-0 cursor-pointer shadow-sm">
+                <span id="sendBtnText">Send</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right: Tailored Bundle Recommendation Card -->
+        <div class="bg-white border border-gray-200 rounded-xl p-5 flex flex-col justify-between shadow-sm">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+              <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider" id="recSolutionTag">Airtel Business Solution</span>
+              <span id="recBadge" class="text-[11px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full">
+                Discovery In Progress
+              </span>
+            </div>
+
+            <div>
+              <h3 id="recBundleName" class="text-base font-bold text-gray-900 leading-snug">Awaiting Discovery Answers</h3>
+              <p id="recBundleDesc" class="text-xs text-gray-500 mt-0.5">Answer the 4 questions on the left. The catalogue engine will assemble your bundle here.</p>
+            </div>
+
+            <!-- Itemized Products from Catalogue -->
+            <div class="space-y-1.5">
+              <span class="text-[11px] font-bold text-gray-700 uppercase tracking-wider block" id="recInclusionsTitle">Catalogue Inclusions:</span>
+              <div id="recProductList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                <div class="text-center py-8 text-gray-400 text-xs" id="recProductPlaceholder">
+                  <i class="fa-solid fa-basket-shopping text-xl mb-1 text-gray-300 block"></i>
+                  Complete the 4 steps to view product breakdown
+                </div>
+              </div>
+            </div>
+
+            <!-- Plain Language Rationale -->
+            <div class="bg-gray-50 border border-gray-200/80 rounded-xl p-3 text-xs">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-gray-700 block mb-1" id="recRationaleTitle">
+                Why this bundle fits your business:
+              </span>
+              <p id="recRationaleText" class="text-gray-600 leading-relaxed text-[11px]">
+                The recommendation engine matches business type, staff headcount, multi-site presence, and network gaps against Airtel Business catalogue rules.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pricing & CTA -->
+          <div class="pt-4 border-t border-gray-200 mt-4 space-y-3">
+            <div class="flex items-baseline justify-between">
+              <div>
+                <span class="text-[11px] text-gray-400 font-medium block" id="recAllInOneLabel">All-in-One Monthly Cost</span>
+                <span class="text-[10px] text-emerald-600 font-bold" id="recSetupWaived"><i class="fa-solid fa-check mr-1"></i> Setup fee waived</span>
+              </div>
+              <span id="recPrice" class="text-2xl font-black text-gray-900">--<span class="text-xs font-normal text-gray-500">/mo</span></span>
+            </div>
+            <button onclick="onPassAdvisor()" id="acceptBtn" disabled class="w-full bg-gray-200 text-gray-400 py-3 rounded-xl font-bold text-xs cursor-not-allowed transition flex items-center justify-center gap-2">
+              <span id="acceptBtnText">Accept Recommendation & View Quote</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: TRANSPARENT QUOTE & ADD-ONS CHECKOUT -->
+    <!-- ======================================================== -->
+    <section id="tab-quote" class="space-y-4 hidden">
+      <!-- Back Navigation & Locked Banner for Tab 2 -->
+      <div class="flex items-center justify-between">
+        <button type="button" onclick="switchTab('advisor')" class="text-xs text-gray-600 hover:text-gray-900 font-semibold flex items-center gap-1.5 cursor-pointer bg-white border border-gray-200 px-3 py-1.5 rounded-lg shadow-sm hover:border-gray-300 transition">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i> <span id="backToAdvisorBtn">Back to AI Advisor</span>
+        </button>
+      </div>
+
+      <div id="quoteLockedBanner" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between shadow-sm">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-lock text-emerald-600"></i> <span id="quoteLockedText">Quote Accepted · 12-Month Price Lock Active (Non-Editable)</span></span>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="unlockPage('quote')" class="text-[11px] text-[#E40000] hover:underline font-bold flex items-center gap-1 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i> <span id="quoteEditText">Modify Add-ons</span></button>
+          <button type="button" onclick="switchTab('kyc')" class="text-[11px] bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1"><span id="quoteNextText">Next: Smart KYC</span> <i class="fa-solid fa-arrow-right text-[9px]"></i></button>
+        </div>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-gray-200 gap-3">
+          <div>
+            <span class="text-[10px] font-bold text-[#E40000] uppercase tracking-wider" id="quoteStepTag">Step 2 of 4 · Instant Quote</span>
+            <h2 class="text-xl font-bold text-gray-900 mt-0.5" id="quoteHeading">Customized Digital Bundle & Transparent Pricing</h2>
+            <p class="text-xs text-gray-500" id="quoteSub">Single consolidated invoice. Server-side price lock. Toggle optional add-ons in real-time.</p>
+          </div>
+          <div class="text-right">
+            <span class="text-[11px] text-gray-400 block font-medium" id="quoteEstLabel">Estimated Monthly Recurring</span>
+            <span id="quoteHeaderTotal" class="text-2xl font-black text-[#E40000]">₹2,723</span>
+            <span class="text-xs text-gray-500" id="quoteGstSuffix"> + GST</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-5">
+          <!-- Left 2 Cols: Inclusions & Optional Add-ons -->
+          <div class="lg:col-span-2 space-y-5">
+            <div>
+              <h3 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2" id="quoteBaseInclusionsTitle">Base Package Inclusions</h3>
+              <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/50 space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-gray-900" id="quotePlanName">Airtel Professional Office Suite</span>
+                  <span class="font-semibold text-gray-900" id="quoteBaseVal">₹2,723 / mo</span>
+                </div>
+                <p class="text-[11px] text-gray-500" id="quotePlanDesc">Commercial broadband + cloud voice IVR + business email + endpoint security with 99.5% uptime SLA.</p>
+              </div>
+            </div>
+
+            <!-- Optional Add-ons -->
+            <div>
+              <h3 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2" id="quoteAddonsTitle">Optional Recommended Add-ons (Server-Side Validated)</h3>
+              <div class="space-y-2.5">
+                <label class="flex items-start justify-between p-3.5 border border-gray-200 rounded-xl bg-white hover:border-gray-300 transition cursor-pointer">
+                  <div class="flex items-start gap-3">
+                    <input type="checkbox" id="addonFailover" onchange="updateQuoteCalculator()" class="mt-0.5 accent-[#E40000] w-4 h-4 rounded cursor-pointer">
+                    <div>
+                      <p class="text-xs font-bold text-gray-900" id="addonFailoverTitle">Automatic 4G/5G Wireless Backup Router</p>
+                      <p class="text-[11px] text-gray-500" id="addonFailoverDesc">If the main internet wire ever cuts, it instantly switches to mobile SIM data so your UPI payments and card machines never stop working.</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold text-gray-900 shrink-0 ml-3" id="addonFailoverPrice">+₹499 / mo</span>
+                </label>
+
+                <label class="flex items-start justify-between p-3.5 border border-gray-200 rounded-xl bg-white hover:border-gray-300 transition cursor-pointer">
+                  <div class="flex items-start gap-3">
+                    <input type="checkbox" id="addonCctv" onchange="updateQuoteCalculator()" class="mt-0.5 accent-[#E40000] w-4 h-4 rounded cursor-pointer">
+                    <div>
+                      <p class="text-xs font-bold text-gray-900" id="addonCctvTitle">Cloud CCTV Surveillance (2 HD Cameras)</p>
+                      <p class="text-[11px] text-gray-500" id="addonCctvDesc">Watch live shop video and past 30 days of recordings directly on your smartphone anytime, anywhere—no expensive recording machine needed.</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold text-gray-900 shrink-0 ml-3" id="addonCctvPrice">+₹398 / mo</span>
+                </label>
+
+                <label class="flex items-start justify-between p-3.5 border border-gray-200 rounded-xl bg-white hover:border-gray-300 transition cursor-pointer">
+                  <div class="flex items-start gap-3">
+                    <input type="checkbox" id="addonStaticIp" onchange="updateQuoteCalculator()" class="mt-0.5 accent-[#E40000] w-4 h-4 rounded cursor-pointer">
+                    <div>
+                      <p class="text-xs font-bold text-gray-900" id="addonStaticIpTitle">Public Static IP Address</p>
+                      <p class="text-[11px] text-gray-500" id="addonStaticIpDesc">A fixed, permanent internet address for your business—required for staff biometric attendance machines, local servers, and direct bank billing.</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold text-gray-900 shrink-0 ml-3" id="addonStaticIpPrice">+₹200 / mo</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Col: Single Monthly Bill Breakdown -->
+          <div class="border border-gray-200 rounded-xl p-5 bg-gray-50/70 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 pb-2 border-b border-gray-200" id="quoteBillTitle">
+                Single Unified Monthly Bill
+              </h3>
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between text-gray-600">
+                  <span id="quoteBillBaseLabel">Base Package</span>
+                  <span id="quoteBaseVal2" class="font-medium text-gray-900">₹2,723</span>
+                </div>
+                <div class="flex justify-between text-gray-600">
+                  <span id="quoteBillAddonLabel">Selected Add-ons</span>
+                  <span id="quoteAddonVal" class="font-medium text-gray-900">₹0</span>
+                </div>
+                <div class="flex justify-between text-gray-600">
+                  <span id="quoteBillSetupLabel">Installation & Setup</span>
+                  <span class="font-medium text-emerald-600" id="quoteBillSetupVal">Waived (₹0)</span>
+                </div>
+                <div class="flex justify-between text-gray-600 pt-2 border-t border-gray-200">
+                  <span id="quoteBillSubtotalLabel">Subtotal</span>
+                  <span id="quoteSubtotalVal" class="font-bold text-gray-900">₹2,723</span>
+                </div>
+                <div class="flex justify-between text-gray-500 text-[11px]">
+                  <span id="quoteBillGstLabel">GST (18%)</span>
+                  <span id="quoteGstVal">₹490</span>
+                </div>
+                <div class="flex justify-between text-sm font-black text-gray-900 pt-2 border-t border-gray-200">
+                  <span id="quoteBillTotalLabel">Total Due Monthly</span>
+                  <span id="quoteTotalVal" class="text-[#E40000]">₹3,213</span>
+                </div>
+              </div>
+
+              <div class="mt-4 p-3 bg-white rounded-lg border border-gray-200 text-[11px] text-gray-500 space-y-1">
+                <p id="quotePriceLockText"><i class="fa-solid fa-shield text-[#E40000] mr-1"></i> Price lock guarantee for 12 months</p>
+                <p id="quoteGstInvoiceText"><i class="fa-solid fa-file-contract text-[#E40000] mr-1"></i> Single consolidated GST tax invoice</p>
+              </div>
+            </div>
+
+            <button onclick="onPassQuote()" id="proceedToKycBtn" class="w-full bg-[#E40000] hover:bg-red-700 text-white py-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 mt-5 cursor-pointer shadow-sm">
+              <span id="proceedToKycText">Proceed to Smart KYC Verification</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: SMART KYC & DATA PRIVACY (DPDP ACT 2023) -->
+    <!-- ======================================================== -->
+    <section id="tab-kyc" class="space-y-4 hidden">
+      <!-- Back Navigation & Locked Banner for Tab 3 -->
+      <div class="flex items-center justify-between">
+        <button type="button" onclick="switchTab('quote')" class="text-xs text-gray-600 hover:text-gray-900 font-semibold flex items-center gap-1.5 cursor-pointer bg-white border border-gray-200 px-3 py-1.5 rounded-lg shadow-sm hover:border-gray-300 transition">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i> <span id="backToQuoteBtn">Back to Quote & Plan</span>
+        </button>
+      </div>
+
+      <div id="kycLockedBanner" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between shadow-sm">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-lock text-emerald-600"></i> <span id="kycLockedText">Smart KYC Verified & DPDP Consent Recorded (Non-Editable)</span></span>
+        <button type="button" onclick="switchTab('tracker')" class="text-[11px] bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1"><span id="kycReturnTrackerText">Return to Order Tracker</span> <i class="fa-solid fa-arrow-right text-[9px]"></i></button>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-gray-200 gap-3">
+          <div>
+            <span class="text-[10px] font-bold text-[#E40000] uppercase tracking-wider" id="kycStepTag">Step 3 of 4 · Automated Digital KYC</span>
+            <h2 class="text-xl font-bold text-gray-900 mt-0.5" id="kycHeading">Smart KYC & Data Privacy Engine</h2>
+            <p class="text-xs text-gray-500" id="kycSub">Instant verification against national registries with DPDP Act 2023 consent and DoT 90-day currency rules.</p>
+          </div>
+          
+        </div>
+
+        <!-- 1. DPDP ACT 2023 MANDATORY CONSENT SCREEN -->
+        <div class="mt-4 p-4 rounded-xl border border-blue-200 bg-blue-50/60 text-xs text-gray-700 space-y-3">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-halved text-blue-700 text-base"></i>
+              <h3 class="font-bold text-blue-900 text-sm" id="dpdpTitle">DPDP Act 2023 Statutory Consent & Privacy Notice</h3>
+            </div>
+            <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded" id="dpdpPurposeBadge">Purpose-Limited</span>
+          </div>
+          <p class="text-[11px] leading-relaxed text-blue-950" id="dpdpNoticeText">
+            In compliance with the <strong>Digital Personal Data Protection Act, 2023</strong> and Department of Telecommunications (DoT) regulations, Airtel Business collects business registration and signatory proof strictly for service provisioning, billing, and statutory telecom verification. PII is tokenized and masked in all systems.
+          </p>
+          <div class="flex items-center gap-2 pt-1">
+            <input type="checkbox" id="dpdpConsentCheck" checked class="w-4 h-4 accent-[#E40000] rounded cursor-pointer">
+            <label for="dpdpConsentCheck" class="text-xs font-semibold text-gray-900 cursor-pointer" id="dpdpConsentCheckLabel">
+              I grant explicit digital consent to verify registration data against GSTN and Udyam national registries.
+            </label>
+          </div>
+        </div>
+
+        <!-- 2. DOCUMENT UPLOAD VAULT & 4 DOCUMENT CARDS -->
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Document 1: Business Registration (GST) -->
+          <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/50 space-y-3 relative shadow-2xs" id="cardDoc1">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-200">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-file-invoice text-[#E40000] text-sm"></i>
+                <span class="text-xs font-bold text-gray-900" id="doc1Title">Doc 1: Business Registration (GST)</span>
+              </div>
+              <span id="doc1StatusBadge" class="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded">
+                Not Uploaded · Required
+              </span>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input type="file" id="doc1FileInput" accept="image/*,.pdf" onchange="handleSingleDocUpload(event, 'gst')" class="hidden">
+
+            <!-- Empty State Dropzone -->
+            <div id="doc1Dropzone" onclick="triggerDocUpload('gst')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDocDrop(event, 'gst')" class="border-2 border-dashed border-gray-300 hover:border-[#E40000] bg-white hover:bg-red-50/20 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center space-y-2 group">
+              <div class="w-11 h-11 rounded-full bg-red-50 text-[#E40000] flex items-center justify-center text-lg group-hover:scale-110 transition shadow-2xs">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <span class="text-xs font-bold text-gray-800" id="dropzonePrompt1">Click to Upload GST Certificate</span>
+              <span class="text-[10px] text-gray-500">Select <code>*_gst_certificate.png</code> from <code>kyc_documents/</code> or local disk</span>
+              <span class="text-[10px] text-red-600 font-semibold bg-red-50 px-2 py-0.5 rounded border border-red-200" id="dropzoneTag1">Mandatory Document</span>
+            </div>
+
+            <!-- Uploaded State View -->
+            <div id="doc1UploadedView" class="space-y-2.5 hidden">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="triggerDocUpload('gst')" class="text-[11px] bg-white border border-gray-300 hover:border-[#E40000] text-gray-700 hover:text-[#E40000] font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-arrows-rotate text-gray-400"></i> <span id="btnUploadDoc1">Replace File</span>
+                  </button>
+                  <button type="button" onclick="removeDoc('gst')" class="text-[11px] bg-red-50 border border-red-200 hover:bg-red-100 text-red-700 font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs" title="Remove this document">
+                    <i class="fa-solid fa-trash-can text-red-600 text-[10px]"></i> <span id="btnRemoveDoc1">Remove</span>
+                  </button>
+                </div>
+                <span id="doc1FileNameBadge" class="text-[10px] text-gray-500 font-mono truncate max-w-[170px]">K01_gst_certificate.png</span>
+              </div>
+
+              <!-- Visual Thumbnail Preview (Full legible object-contain) -->
+              <div class="relative w-full h-44 bg-white rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center p-1.5">
+                <img id="doc1PreviewImg" src="/kyc_documents/K01_gst_certificate.png" alt="GST Certificate Preview" class="max-h-full max-w-full object-contain mx-auto" onerror="this.src='../kyc_documents/K01_gst_certificate.png'; this.onerror=null;">
+                <span id="doc1FileTag" class="absolute bottom-1 right-1 bg-black/75 text-white text-[9px] px-1.5 py-0.5 rounded font-mono">K01_gst_certificate.png</span>
+              </div>
+            </div>
+
+            <!-- Extracted Details & Registry Verification -->
+            <div class="space-y-1.5 text-xs text-gray-600 bg-white p-3 rounded-lg border border-gray-200/80">
+              <div class="space-y-1">
+                <span id="doc1GstinLabel" class="block text-[11px] font-semibold text-gray-700">GSTIN (Verified against mock_gstin_registry.csv):</span>
+                <input type="text" id="doc1GstinInput" value="" placeholder="Auto-detected or enter 15-char GSTIN" maxlength="15" oninput="onGstinManualChange(this.value)" class="w-full font-mono font-bold text-xs text-gray-900 border border-gray-300 rounded-lg px-2.5 py-1 bg-white focus-airtel uppercase">
+              </div>
+              <div class="flex justify-between items-center pt-0.5">
+                <span id="doc1LegalLabel">Entity Legal Name:</span>
+                <span id="doc1LegalName" class="font-bold text-gray-900">Awaiting Document Upload</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span id="doc1RegCheckLabel">Registry Match Status:</span>
+                <span id="doc1RegDate" class="text-gray-400 font-medium flex items-center gap-1 text-xs">
+                  <i class="fa-solid fa-clock"></i> Not Verified (Document Missing)
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Document 2: MSME Certificate (Udyam) -->
+          <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/50 space-y-3 relative shadow-2xs" id="cardDoc2">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-200">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-certificate text-[#E40000] text-sm"></i>
+                <span class="text-xs font-bold text-gray-900" id="doc2Title">Doc 2: MSME Registration (Udyam)</span>
+              </div>
+              <span id="doc2StatusBadge" class="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded">
+                Not Uploaded · Required
+              </span>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input type="file" id="doc2FileInput" accept="image/*,.pdf" onchange="handleSingleDocUpload(event, 'udyam')" class="hidden">
+
+            <!-- Empty State Dropzone -->
+            <div id="doc2Dropzone" onclick="triggerDocUpload('udyam')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDocDrop(event, 'udyam')" class="border-2 border-dashed border-gray-300 hover:border-[#E40000] bg-white hover:bg-amber-50/20 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center space-y-2 group">
+              <div class="w-11 h-11 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center text-lg group-hover:scale-110 transition shadow-2xs">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <span class="text-xs font-bold text-gray-800" id="dropzonePrompt2">Click to Upload Udyam Certificate</span>
+              <span class="text-[10px] text-gray-500">Select <code>*_udyam_certificate.png</code> from <code>kyc_documents/</code> or local disk</span>
+              <span class="text-[10px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded border border-amber-200" id="dropzoneTag2">Mandatory Document</span>
+            </div>
+
+            <!-- Uploaded State View -->
+            <div id="doc2UploadedView" class="space-y-2.5 hidden">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="triggerDocUpload('udyam')" class="text-[11px] bg-white border border-gray-300 hover:border-[#E40000] text-gray-700 hover:text-[#E40000] font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-arrows-rotate text-gray-400"></i> <span id="btnUploadDoc2">Replace File</span>
+                  </button>
+                  <button type="button" onclick="removeDoc('udyam')" class="text-[11px] bg-red-50 border border-red-200 hover:bg-red-100 text-red-700 font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs" title="Remove this document">
+                    <i class="fa-solid fa-trash-can text-red-600 text-[10px]"></i> <span id="btnRemoveDoc2">Remove</span>
+                  </button>
+                </div>
+                <span id="doc2FileNameBadge" class="text-[10px] text-gray-500 font-mono truncate max-w-[170px]">K01_udyam_certificate.png</span>
+              </div>
+
+              <!-- Visual Thumbnail Preview -->
+              <div class="relative w-full h-44 bg-white rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center p-1.5">
+                <img id="doc2PreviewImg" src="/kyc_documents/K01_udyam_certificate.png" alt="Udyam Certificate Preview" class="max-h-full max-w-full object-contain mx-auto" onerror="this.src='../kyc_documents/K01_udyam_certificate.png'; this.onerror=null;">
+                <span id="doc2FileTag" class="absolute bottom-1 right-1 bg-black/75 text-white text-[9px] px-1.5 py-0.5 rounded font-mono">K01_udyam_certificate.png</span>
+              </div>
+            </div>
+
+            <div class="space-y-1 text-xs text-gray-600 bg-white p-3 rounded-lg border border-gray-200/80">
+              <div class="flex justify-between">
+                <span id="doc2UdyamNoLabel">Udyam MSME Number:</span>
+                <span id="doc2UdyamNo" class="font-mono font-bold text-gray-900">Awaiting Document Upload</span>
+              </div>
+              <div class="flex justify-between">
+                <span id="doc2TypeLabel">Classification:</span>
+                <span id="doc2UdyamType" class="font-medium text-gray-900">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span id="doc2PriorityLabel">MSME Priority:</span>
+                <span id="doc2PriorityVal" class="text-emerald-700 font-bold">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Document 3: Signatory Identification (Masked PII) -->
+          <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/50 space-y-3 relative shadow-2xs" id="cardDoc3">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-200">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-id-card text-[#E40000] text-sm"></i>
+                <span class="text-xs font-bold text-gray-900" id="doc3Title">Doc 3: Authorized Signatory ID</span>
+              </div>
+              <span class="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded" id="doc3TokenBadge">
+                Not Uploaded · Required
+              </span>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input type="file" id="doc3FileInput" accept="image/*,.pdf" onchange="handleSingleDocUpload(event, 'signatory_id')" class="hidden">
+
+            <!-- Empty State Dropzone -->
+            <div id="doc3Dropzone" onclick="triggerDocUpload('signatory_id')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDocDrop(event, 'signatory_id')" class="border-2 border-dashed border-gray-300 hover:border-[#E40000] bg-white hover:bg-blue-50/20 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center space-y-2 group">
+              <div class="w-11 h-11 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center text-lg group-hover:scale-110 transition shadow-2xs">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <span class="text-xs font-bold text-gray-800" id="dropzonePrompt3">Click to Upload Signatory ID</span>
+              <span class="text-[10px] text-gray-500">Select <code>*_signatory_id.png</code> (PAN/Aadhaar) from <code>kyc_documents/</code></span>
+              <span class="text-[10px] text-blue-700 font-semibold bg-blue-50 px-2 py-0.5 rounded border border-blue-200" id="dropzoneTag3">Mandatory Document</span>
+            </div>
+
+            <!-- Uploaded State View -->
+            <div id="doc3UploadedView" class="space-y-2.5 hidden">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="triggerDocUpload('signatory_id')" class="text-[11px] bg-white border border-gray-300 hover:border-[#E40000] text-gray-700 hover:text-[#E40000] font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-arrows-rotate text-gray-400"></i> <span id="btnUploadDoc3">Replace File</span>
+                  </button>
+                  <button type="button" onclick="removeDoc('signatory_id')" class="text-[11px] bg-red-50 border border-red-200 hover:bg-red-100 text-red-700 font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs" title="Remove this document">
+                    <i class="fa-solid fa-trash-can text-red-600 text-[10px]"></i> <span id="btnRemoveDoc3">Remove</span>
+                  </button>
+                </div>
+                <span id="doc3FileNameBadge" class="text-[10px] text-gray-500 font-mono truncate max-w-[170px]">K01_signatory_id.png</span>
+              </div>
+
+              <!-- Visual Thumbnail Preview -->
+              <div class="relative w-full h-44 bg-white rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center p-1.5">
+                <img id="doc3PreviewImg" src="/kyc_documents/K01_signatory_id.png" alt="Signatory ID Preview" class="max-h-full max-w-full object-contain mx-auto" onerror="this.src='../kyc_documents/K01_signatory_id.png'; this.onerror=null;">
+                <span id="doc3FileTag" class="absolute bottom-1 right-1 bg-black/75 text-white text-[9px] px-1.5 py-0.5 rounded font-mono">K01_signatory_id.png</span>
+              </div>
+            </div>
+
+            <div class="space-y-1 text-xs text-gray-600 bg-white p-3 rounded-lg border border-gray-200/80">
+              <div class="flex justify-between">
+                <span id="doc3SignatoryLabel">Authorized Signatory:</span>
+                <span id="doc3SignatoryName" class="font-bold text-gray-900">Awaiting Document Upload</span>
+              </div>
+              <div class="flex justify-between">
+                <span id="doc3IdLabel">Redacted Identifier:</span>
+                <span id="doc3SignatoryId" class="font-mono font-bold text-gray-900">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span id="doc3PrivacyLabel">Privacy Safeguard:</span>
+                <span id="doc3ConsentStatus" class="text-gray-500 font-medium">Awaiting Document</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Document 4: Address Proof (DoT 90-Day Rule) -->
+          <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/50 space-y-3 relative shadow-2xs" id="cardDoc4">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-200">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-[#E40000] text-sm"></i>
+                <span class="text-xs font-bold text-gray-900" id="doc4Title">Doc 4: Address Proof (Premises)</span>
+              </div>
+              <span id="doc4StatusBadge" class="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded">
+                Not Uploaded · Required
+              </span>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input type="file" id="doc4FileInput" accept="image/*,.pdf" onchange="handleSingleDocUpload(event, 'address_proof')" class="hidden">
+
+            <!-- Empty State Dropzone -->
+            <div id="doc4Dropzone" onclick="triggerDocUpload('address_proof')" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDocDrop(event, 'address_proof')" class="border-2 border-dashed border-gray-300 hover:border-[#E40000] bg-white hover:bg-emerald-50/20 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center space-y-2 group">
+              <div class="w-11 h-11 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg group-hover:scale-110 transition shadow-2xs">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <span class="text-xs font-bold text-gray-800" id="dropzonePrompt4">Click to Upload Address Proof</span>
+              <span class="text-[10px] text-gray-500">Select <code>*_address_proof.png</code> (Electricity Bill) from <code>kyc_documents/</code></span>
+              <span class="text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200" id="dropzoneTag4">Mandatory Document</span>
+            </div>
+
+            <!-- Uploaded State View -->
+            <div id="doc4UploadedView" class="space-y-2.5 hidden">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="triggerDocUpload('address_proof')" class="text-[11px] bg-white border border-gray-300 hover:border-[#E40000] text-gray-700 hover:text-[#E40000] font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-arrows-rotate text-gray-400"></i> <span id="btnUploadDoc4">Replace File</span>
+                  </button>
+                  <button type="button" onclick="removeDoc('address_proof')" class="text-[11px] bg-red-50 border border-red-200 hover:bg-red-100 text-red-700 font-semibold px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1.5 shadow-2xs" title="Remove this document">
+                    <i class="fa-solid fa-trash-can text-red-600 text-[10px]"></i> <span id="btnRemoveDoc4">Remove</span>
+                  </button>
+                </div>
+                <span id="doc4FileNameBadge" class="text-[10px] text-gray-500 font-mono truncate max-w-[170px]">K01_address_proof.png</span>
+              </div>
+
+              <!-- Visual Thumbnail Preview -->
+              <div class="relative w-full h-44 bg-white rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center p-1.5">
+                <img id="doc4PreviewImg" src="/kyc_documents/K01_address_proof.png" alt="Address Proof Preview" class="max-h-full max-w-full object-contain mx-auto" onerror="this.src='../kyc_documents/K01_address_proof.png'; this.onerror=null;">
+                <span id="doc4FileTag" class="absolute bottom-1 right-1 bg-black/75 text-white text-[9px] px-1.5 py-0.5 rounded font-mono">K01_address_proof.png</span>
+              </div>
+            </div>
+
+            <div class="space-y-1 text-xs text-gray-600 bg-white p-3 rounded-lg border border-gray-200/80">
+              <div class="flex justify-between">
+                <span id="doc4DocTypeLabel">Document Type:</span>
+                <span id="doc4DocType" class="font-medium text-gray-900">Awaiting Document Upload</span>
+              </div>
+              <div class="flex justify-between">
+                <span id="doc4IssueDateLabel">Validity & Issue Date:</span>
+                <span id="doc4IssueDate" class="font-bold text-gray-900">—</span>
+              </div>
+              <div class="flex justify-between">
+                <span id="doc4PremisesLabel">Premises Address:</span>
+                <span id="doc4Premises" class="font-medium text-gray-900 truncate max-w-[220px]">—</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Encrypted Vault Storage Notification Bar -->
+        <div id="uploadVaultStatus" class="mt-4 p-3.5 border border-amber-300 bg-amber-50/80 rounded-xl text-xs flex flex-col sm:flex-row items-center justify-between gap-2 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-emerald-700 text-sm"></i>
+            <span class="text-amber-950 font-semibold" id="uploadVaultNotice"><i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> Please upload all 4 mandatory business KYC documents below for automated compliance check.</span>
+          </div>
+          <span id="uploadedCountBadge" class="bg-amber-200 text-amber-900 font-bold px-2.5 py-0.5 rounded-full text-[10px] shrink-0">
+            0 / 4 Documents Uploaded (4 Missing)
+          </span>
+        </div>
+
+        <!-- Missing Document Warning Alert Box -->
+        <div id="kycMissingAlert" class="hidden mt-4 p-4 border border-red-300 bg-red-50 rounded-xl text-xs space-y-2">
+          <div class="flex items-center gap-2 text-red-800 font-bold">
+            <i class="fa-solid fa-circle-exclamation text-base text-red-600"></i>
+            <span>Cannot Proceed: Missing Required KYC Document(s)</span>
+          </div>
+          <p class="text-red-700">Please upload all 4 required business documents before running automated verification:</p>
+          <ul id="kycMissingList" class="list-disc list-inside space-y-1 text-red-800 font-medium pl-1">
+          </ul>
+        </div>
+
+        <!-- Verification Action Button -->
+        <div class="pt-4 flex items-center justify-between">
+          <button onclick="runCleanKycVerification()" class="bg-[#E40000] hover:bg-red-700 text-white px-5 py-2.5 rounded-xl font-bold text-xs transition flex items-center gap-2 cursor-pointer shadow-sm active:scale-95">
+            <i class="fa-solid fa-clipboard-check text-sm"></i>
+            <span id="runKycBtnText">Run Automated Compliance & Registry Check</span>
+          </button>
+          <span class="text-[11px] text-gray-400" id="runKycSubtext">Autonomous evaluation & DoT rules</span>
+        </div>
+
+        <!-- Verification Decision Card -->
+        <div id="kycResultCard" class="mt-5 border border-gray-200 rounded-xl p-5 bg-white shadow-sm hidden space-y-3">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+            <div>
+              <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider" id="kycDecisionHeaderLabel">Automated Verification Decision</span>
+              <h4 id="kycDecisionTitle" class="text-sm font-bold text-gray-900 mt-0.5">Verification Approved</h4>
+            </div>
+            <span id="kycDecisionBadge" class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">
+              APPROVED
+            </span>
+          </div>
+
+          <!-- Plain Language Business Explanation -->
+          <div class="p-3 rounded-lg bg-gray-50 border border-gray-100 text-xs text-gray-700 leading-relaxed">
+            <span class="font-bold text-gray-900 block mb-0.5" id="kycAuditFindingLabel">Compliance Summary:</span>
+            <p id="kycDecisionExplanation">All 4 documents verified. Active GSTIN matches national tax registry, address proof is within DoT 90-day currency limits, and DPDP digital consent recorded.</p>
+          </div>
+
+          <!-- Structured Checklist -->
+          <div class="space-y-1.5" id="kycChecksList">
+            <!-- Dynamically populated checklist -->
+          </div>
+
+          <!-- CTA to Tracker if Approved -->
+          <div class="pt-2 flex justify-end">
+            <button id="kycProceedBtn" onclick="onPassKyc()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl font-bold text-xs transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+              <span id="kycProceedBtnText">KYC Approved · Proceed to Order Tracker</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 4: ORDER TRACKER (REAL-TIME SLA & FIELD ENGINEER) -->
+    <!-- ======================================================== -->
+    <section id="tab-tracker" class="space-y-4 hidden">
+      <!-- Completed Onboarding Stages Summary Banner -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs mb-4">
+        <div class="bg-white border border-emerald-200 rounded-xl p-3.5 flex items-center justify-between shadow-2xs">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+              <span class="font-bold text-gray-900 block text-xs" id="trackerRevAdvTitle">1. AI Advisor Discovery</span>
+              <span class="text-[10px] text-gray-500" id="trackerRevAdvSub">Needs Assessed · Plan Recommended</span>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full uppercase" id="trackerRevAdvBadge">Done</span>
+        </div>
+
+        <div class="bg-white border border-emerald-200 rounded-xl p-3.5 flex items-center justify-between shadow-2xs">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+              <span class="font-bold text-gray-900 block text-xs" id="trackerRevQuoteTitle">2. Quote &amp; Plan</span>
+              <span class="text-[10px] text-gray-500" id="trackerRevQuoteSub">Transparent Monthly Bill Locked</span>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full uppercase" id="trackerRevQuoteBadge">Done</span>
+        </div>
+
+        <div class="bg-white border border-emerald-200 rounded-xl p-3.5 flex items-center justify-between shadow-2xs">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+              <span class="font-bold text-gray-900 block text-xs" id="trackerRevKycTitle">3. Smart KYC &amp; Privacy</span>
+              <span class="text-[10px] text-gray-500" id="trackerRevKycSub">4 Documents &amp; GSTN Verified</span>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full uppercase" id="trackerRevKycBadge">Done</span>
+        </div>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-gray-200 gap-3">
+          <div>
+            <span class="text-[10px] font-bold text-[#E40000] uppercase tracking-wider" id="trackerStepTag">Step 4 of 4 · Live Order & Installation</span>
+            <h2 class="text-xl font-bold text-gray-900 mt-0.5" id="trackerHeading">Order Status & Installation Tracker</h2>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg text-emerald-800 text-xs font-bold" id="trackerOrderBadge">
+            <i class="fa-solid fa-circle-check mr-1"></i> <span id="trackerOrderBadgeText">Order</span> #AB-2026-88192
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-5">
+          <!-- Stepper Pipeline -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xs font-bold text-gray-700 uppercase tracking-wider" id="trackerMilestoneTitle">Installation Progress</h3>
+              <span class="text-xs font-bold text-[#E40000] bg-red-50 px-2 py-0.5 rounded border border-red-100" id="trackerSlaBadge">
+                Guaranteed Installation: Under 48 Hours
+              </span>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-gray-900" id="m1Title">1. Plan & Quote Confirmed</p>
+                  <p class="text-[10px] text-gray-500" id="m1Desc">Your business plan is confirmed with 12-month price protection.</p>
+                </div>
+                <span class="text-[10px] text-gray-400" id="m1Time">--:-- --</span>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200">
+                <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-gray-900" id="m2Title">2. Business KYC Verified</p>
+                  <p class="text-[10px] text-gray-500" id="m2Desc">Business registration and documents successfully verified.</p>
+                </div>
+                <span class="text-[10px] text-gray-400" id="m2Time">--:-- --</span>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-red-50 border border-red-200">
+                <div class="w-7 h-7 rounded-full bg-[#E40000] text-white flex items-center justify-center text-xs font-bold">
+                  <i class="fa-solid fa-gear fa-spin"></i>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-gray-900" id="m3Title">3. Installation Engineer Assigned</p>
+                  <p class="text-[10px] text-red-700" id="m3Desc">Airtel technician is on the way to install your fiber connection.</p>
+                </div>
+                <span class="text-[10px] font-bold text-[#E40000]" id="m3Status">IN PROGRESS</span>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-200 opacity-60">
+                <div class="w-7 h-7 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-xs font-bold">
+                  4
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-gray-900" id="m4Title">4. Speed Test & Service Activation</p>
+                  <p class="text-[10px] text-gray-500" id="m4Desc">On-site speed test at your business and welcome confirmation SMS.</p>
+                </div>
+                <span class="text-[10px] text-gray-400" id="m4Status">Estimated Tomorrow</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assigned Field Engineer Card -->
+          <div class="border border-gray-200 rounded-xl p-5 bg-gray-50/70 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xs font-bold text-gray-800 uppercase tracking-wider mb-3 pb-2 border-b border-gray-200" id="assignedExecTitle">
+                Assigned Installation Engineer
+              </h3>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-11 h-11 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-700 font-bold text-sm">
+                  RK
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900" id="assignedExecName">Ramesh Kumar</h4>
+                  <p class="text-[11px] text-gray-500" id="assignedExecRole">Senior Fiber Installation Engineer</p>
+                  <p class="text-[10px] text-emerald-600 font-semibold" id="assignedExecRating">★ 4.9 Rating (420 installs)</p>
+                </div>
+              </div>
+
+              <div class="space-y-2 text-xs bg-white p-3 rounded-lg border border-gray-200 text-gray-600">
+                <div class="flex justify-between">
+                  <span id="slaLabel">Guaranteed Time:</span>
+                  <span class="font-bold text-gray-900" id="slaVal">Under 48 Hours</span>
+                </div>
+                <div class="flex justify-between">
+                  <span id="installWindowLabel">Installation Slot:</span>
+                  <span class="font-bold text-[#E40000]" id="installWindowVal">Tomorrow, 2:00 PM - 4:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span id="equipmentLabel">Equipment Provided:</span>
+                  <span class="font-bold text-gray-900" id="equipmentVal">Wi-Fi 6 High-Speed Router</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-xs">
+              <span class="text-gray-500" id="supportLabel">Need Help? Call:</span>
+              <a href="tel:1800102030" class="text-[#E40000] font-bold hover:underline">1800-102-030</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="mock_registry_data.js"></script>
+  <script src="locales.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
