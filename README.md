@@ -9,7 +9,7 @@
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 Run the entire platform with zero external dependencies using native Node.js:
 
@@ -28,7 +28,7 @@ npm test
 
 ---
 
-## 🎯 Executive Overview & Problem Solved
+##  Executive Overview & Problem Solved
 
 Traditional MSME telecom onboarding suffers from high drop-offs and friction:
 - **68% drop-off** across lead qualification, manual quote negotiation, and physical KYC collection.
@@ -43,7 +43,7 @@ Traditional MSME telecom onboarding suffers from high drop-offs and friction:
 
 ---
 
-## 🛠️ System Architecture
+##  System Architecture
 
 ```mermaid
 flowchart LR
@@ -62,7 +62,7 @@ flowchart LR
 
 ---
 
-## 🌐 Multilingual Localization
+##  Multilingual Localization
 
 Fully localized across **8 Indian Languages** with zero fallback corruption:
 - **English** (India)
@@ -78,7 +78,7 @@ Dynamic language switching persists seamlessly across all wizard steps, quote li
 
 ---
 
-## 🧪 Automated Testing & Verification
+##  Automated Testing & Verification
 
 Run the comprehensive test suite verifying 97+ end-to-end assertions:
 
@@ -94,7 +94,7 @@ npm test
 
 ---
 
-## 📂 Repository File Structure
+##  Repository File Structure
 
 ```
 .
@@ -144,7 +144,7 @@ npm test
 
 ---
 
-## 📊 Dataset Reference (Track A Synthetic Pack)
+##  Dataset Reference (Track A Synthetic Pack)
 
 All businesses, people, identifiers, and figures in this pack are synthetic and generated for the Airtel SYNC Hackathon:
 
